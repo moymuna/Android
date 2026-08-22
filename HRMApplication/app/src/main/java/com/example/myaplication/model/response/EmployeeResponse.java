@@ -45,8 +45,8 @@ public class EmployeeResponse {
     private String officeName;
 
 
-    private AddressResponseDto presentAddress;
-    private AddressResponseDto permanentAddress;
+    private AddressResponse presentAddress;
+    private AddressResponse permanentAddress;
 
 
     private Long userId;

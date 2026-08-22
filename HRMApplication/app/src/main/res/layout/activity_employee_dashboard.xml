@@ -1,10 +1,475 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="@drawable/bg_gradient"
+
     tools:context=".EmployeeDashboard">
+
+
+    <!-- ===================================================== -->
+    <!-- MAIN SCROLL VIEW                                     -->
+    <!-- ===================================================== -->
+
+    <ScrollView
+        android:id="@+id/dashboardScrollView"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:fillViewport="true"
+
+        android:clipToPadding="false"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical"
+
+            android:padding="16dp">
+
+
+            <!-- ================================================= -->
+            <!-- HEADER                                            -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical"
+
+                android:padding="20dp"
+
+                android:background="@drawable/bg_card">
+
+
+                <TextView
+                    android:id="@+id/tvWelcome"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="Welcome"
+
+                    android:textColor="#222222"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tvEmployeeName"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="8dp"
+
+                    android:text="Employee"
+
+                    android:textColor="#333333"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tvEmployeeCode"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="8dp"
+
+                    android:text="Employee ID: N/A"
+
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/tvDesignation"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="4dp"
+
+                    android:text="Designation: N/A"
+
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/tvDepartment"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="4dp"
+
+                    android:text="Department: N/A"
+
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
+            <!-- ================================================= -->
+            <!-- SECTION TITLE                                     -->
+            <!-- ================================================= -->
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp"
+
+                android:text="Employee Services"
+
+                android:textColor="#FFFFFF"
+
+                android:textSize="20sp"
+
+                android:textStyle="bold" />
+
+
+            <!-- ================================================= -->
+            <!-- ROW 1                                             -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAttendance"
+
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginEnd="6dp"
+
+                    android:text="Attendance"
+
+                    android:textSize="13sp"
+
+                    android:textStyle="bold"
+
+                    android:textAllCaps="false"
+
+                    app:cornerRadius="15dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnApplyLeave"
+
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginStart="6dp"
+
+                    android:text="Apply Leave"
+
+                    android:textSize="13sp"
+
+                    android:textStyle="bold"
+
+                    android:textAllCaps="false"
+
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+
+            <!-- ================================================= -->
+            <!-- ROW 2                                             -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="12dp"
+
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLeaveBalance"
+
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginEnd="6dp"
+
+                    android:text="Leave Balance"
+
+                    android:textSize="13sp"
+
+                    android:textStyle="bold"
+
+                    android:textAllCaps="false"
+
+                    app:cornerRadius="15dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSalary"
+
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginStart="6dp"
+
+                    android:text="My Salary"
+
+                    android:textSize="13sp"
+
+                    android:textStyle="bold"
+
+                    android:textAllCaps="false"
+
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+
+            <!-- ================================================= -->
+            <!-- ROW 3                                             -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="12dp"
+
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPayslip"
+
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginEnd="6dp"
+
+                    android:text="Payslip"
+
+                    android:textSize="13sp"
+
+                    android:textStyle="bold"
+
+                    android:textAllCaps="false"
+
+                    app:cornerRadius="15dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDocuments"
+
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginStart="6dp"
+
+                    android:text="Documents"
+
+                    android:textSize="13sp"
+
+                    android:textStyle="bold"
+
+                    android:textAllCaps="false"
+
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+
+            <!-- ================================================= -->
+            <!-- ROW 4                                             -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="12dp"
+
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNotice"
+
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginEnd="6dp"
+
+                    android:text="Notice Board"
+
+                    android:textSize="13sp"
+
+                    android:textStyle="bold"
+
+                    android:textAllCaps="false"
+
+                    app:cornerRadius="15dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnHoliday"
+
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginStart="6dp"
+
+                    android:text="Holiday"
+
+                    android:textSize="13sp"
+
+                    android:textStyle="bold"
+
+                    android:textAllCaps="false"
+
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+
+            <!-- ================================================= -->
+            <!-- ROW 5                                             -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="12dp"
+
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnProject"
+
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginEnd="6dp"
+
+                    android:text="Project"
+
+                    android:textSize="13sp"
+
+                    android:textStyle="bold"
+
+                    android:textAllCaps="false"
+
+                    app:cornerRadius="15dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTraining"
+
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginStart="6dp"
+
+                    android:text="Training"
+
+                    android:textSize="13sp"
+
+                    android:textStyle="bold"
+
+                    android:textAllCaps="false"
+
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+
+            <!-- ================================================= -->
+            <!-- LOGOUT                                            -->
+            <!-- ================================================= -->
+
+            <com.google.android.material.button.MaterialButton
+
+                android:id="@+id/btnLogout"
+
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="20dp"
+
+                android:text="LOGOUT"
+
+                android:textStyle="bold"
+
+                android:textAllCaps="false"
+
+                android:textColor="#FFFFFF"
+
+                android:backgroundTint="#D32F2F"
+
+                app:cornerRadius="20dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

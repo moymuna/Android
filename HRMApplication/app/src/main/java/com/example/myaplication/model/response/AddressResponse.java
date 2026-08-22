@@ -3,7 +3,7 @@ package com.example.myaplication.model.response;
 import lombok.Data;
 
 @Data
-public class AddressResponseDto {
+public class AddressResponse {
 
     private Long id;
 
