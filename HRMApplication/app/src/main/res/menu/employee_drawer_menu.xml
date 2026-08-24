@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_dashboard"
+            android:title="Dashboard"
+            android:icon="@drawable/ic_home" />
+
+        <item
+            android:id="@+id/nav_attendance"
+            android:title="Attendance"
+            android:icon="@drawable/ic_attendance" />
+
+        <item
+            android:id="@+id/nav_leave"
+            android:title="Leave"
+            android:icon="@drawable/ic_leave" />
+
+        <item
+            android:id="@+id/nav_salary"
+            android:title="My Salary"
+            android:icon="@drawable/ic_salary" />
+
+        <item
+            android:id="@+id/nav_payslip"
+            android:title="Payslip"
+            android:icon="@drawable/ic_payslip" />
+
+        <item
+            android:id="@+id/nav_documents"
+            android:title="Documents"
+            android:icon="@drawable/ic_documents" />
+
+        <item
+            android:id="@+id/nav_notice"
+            android:title="Notice Board"
+            android:icon="@drawable/ic_notice" />
+
+        <item
+            android:id="@+id/nav_holiday"
+            android:title="Holiday"
+            android:icon="@drawable/ic_holiday" />
+
+        <item
+            android:id="@+id/nav_project"
+            android:title="Project"
+            android:icon="@drawable/ic_project" />
+
+        <item
+            android:id="@+id/nav_training"
+            android:title="Training"
+            android:icon="@drawable/ic_training" />
+
+    </group>
+
+
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_logout" />
+
+</menu>
