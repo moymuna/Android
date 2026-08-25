@@ -1,32 +1,46 @@
-# Implementation Plan - Create Missing Icon Resources
+# Implementation Plan - Advance Salary Feature
 
-Create the missing vector drawable resources required for the `EmployeeDashboard` and `NavigationView` menu.
+Add the "Advance Salary" feature to the HRM Application, allowing employees to request salary advances directly from the app.
 
 ## Proposed Changes
 
-### [NEW] Drawable Resources
+### 1. Data Models & API Integration
+#### [NEW] [AdvanceRequest.java](file:///F:/JEE69 Course/Android/Android/HRMApplication/app/src/main/java/com/example/myaplication/model/request/AdvanceRequest.java)
+- Fields: `amount`, `requestDate`, `requiredByDate`, `installments`, `reason`, `employeeId`.
 
-Create the following vector drawable files in `app/src/main/res/drawable/`:
+#### [NEW] [AdvanceResponse.java](file:///F:/JEE69 Course/Android/Android/HRMApplication/app/src/main/java/com/example/myaplication/model/response/AdvanceResponse.java)
+- Fields: `id`, `amount`, `requestDate`, `requiredByDate`, `installments`, `monthlyDeduction`, `recoveredAmount`, `outstandingAmount`, `reason`, `status`, `employeeId`, `employeeName`.
 
-- `ic_notification.xml`: Notification bell icon.
-- `ic_person.xml`: User profile/person icon.
-- `ic_home.xml`: Dashboard/Home icon.
-- `ic_attendance.xml`: Calendar/Check icon for attendance.
-- `ic_leave.xml`: Time off/Holiday icon for leaves.
-- `ic_salary.xml`: Money/Finance icon for salary.
-- `ic_payslip.xml`: Receipt/Document icon for payslips.
-- `ic_documents.xml`: Folder/Files icon for documents.
-- `ic_notice.xml`: Announcement/Notice board icon.
-- `ic_holiday.xml`: Event/Holiday icon.
-- `ic_project.xml`: Work/Assignment icon for projects.
-- `ic_training.xml`: School/Learning icon for training.
-- `ic_logout.xml`: Exit/Power icon for logout.
-- `ic_menu.xml`: Hamburger menu icon (3 bars).
+#### [MODIFY] [ApiService.java](file:///F:/JEE69 Course/Android/Android/HRMApplication/app/src/main/java/com/example/myaplication/api/ApiService.java)
+- Add `@POST("api/advances/save")` for `saveAdvance`.
+- Add `@GET("api/advances/employee/{employeeId}")` for `getAdvancesByEmployee`.
+
+### 2. Repository
+#### [NEW] [AdvanceRepository.java](file:///F:/JEE69 Course/Android/Android/HRMApplication/app/src/main/java/com/example/myaplication/Repository/AdvanceRepository.java)
+- Handles API calls for requesting and fetching advance salary records.
+
+### 3. Dashboard Integration
+#### [MODIFY] [activity_employee_dashboard.xml](file:///F:/JEE69 Course/Android/Android/HRMApplication/app/src/main/res/layout/activity_employee_dashboard.xml)
+- Add a new button for "Advance Salary" in the Quick Actions section.
+
+#### [MODIFY] [EmployeeDashboard.java](file:///F:/JEE69 Course/Android/Android/HRMApplication/app/src/main/java/com/example/myaplication/EmployeeDashboard.java)
+- Initialize the new button and set an `OnClickListener` to open `AdvanceSalaryActivity`.
+
+### 4. Advance Salary UI & Logic
+#### [MODIFY] [activity_advance_salary.xml](file:///F:/JEE69 Course/Android/Android/HRMApplication/app/src/main/res/layout/activity_advance_salary.xml)
+- Create a form for requesting an advance (Amount, Required Date, Installments, Reason).
+- Include a list/RecyclerView to show previous advance requests and their status.
+
+#### [MODIFY] [AdvanceSalaryActivity.java](file:///F:/JEE69 Course/Android/Android/HRMApplication/app/src/main/java/com/example/myaplication/AdvanceSalaryActivity.java)
+- Implement form validation and submission logic.
+- Fetch and display the employee's advance salary history.
 
 ## Verification Plan
 
+### Automated Tests
+- Run `gradle_build app:assembleDebug` to ensure no compilation errors.
+
 ### Manual Verification
-- Deploy the app and check the `EmployeeDashboard`.
-- Open the Navigation Drawer and verify all menu icons are displayed correctly.
-- Check the toolbar for the menu and notification icons.
-- Verify the employee profile card displays the placeholder person icon.
+- Open the app, navigate to the dashboard, and click "Advance Salary".
+- Submit a test request and verify it calls the backend API (via Logcat or server logs).
+- Check if the history list updates with the new request.

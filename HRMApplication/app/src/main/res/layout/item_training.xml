@@ -17,22 +17,13 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tvProjectName"
+            android:id="@+id/tvTrainingTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Project Name"
-            android:textColor="#102A56"
+            android:text="Training Title"
+            android:textColor="#92400E"
             android:textSize="18sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvProjectDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Project Description goes here..."
-            android:textColor="#51627D"
-            android:textSize="14sp" />
 
         <View
             android:layout_width="match_parent"
@@ -60,7 +51,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvStartDate"
+                    android:id="@+id/tvTrainingStartDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
@@ -85,15 +76,28 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvEndDate"
+                    android:id="@+id/tvTrainingEndDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="2023-12-31"
+                    android:text="2023-01-05"
                     android:textColor="#102A56"
                     android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnApplyTraining"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:text="Apply Now"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:backgroundTint="#92400E"
+            app:cornerRadius="12dp" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

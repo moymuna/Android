@@ -4,12 +4,15 @@ import com.example.myaplication.Enum.LeaveType;
 import lombok.Data;
 
 @Data
-public class LeaveBalanceResponse {
+public class LeaveResponse {
     private Long id;
-    private Integer year;
-    private Double totalEntitled;
-    private Double used;
-    private Double remaining;
+    private String startDate;
+    private String endDate;
+    private Double totalDays;
+    private String reason;
+    private String status;
+    private String decidedAt;
+    private String rejectionReason;
     private Long employeeId;
     private String employeeName;
     private Long leaveTypeId;

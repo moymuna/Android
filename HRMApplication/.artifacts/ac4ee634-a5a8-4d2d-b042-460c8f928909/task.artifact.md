@@ -1,16 +1,15 @@
-# Task - Create Missing Icon Resources
+# Task - Implement Advance Salary Feature
 
-- `[x]` Create `ic_notification.xml`
-- `[x]` Create `ic_person.xml`
-- `[x]` Create `ic_home.xml`
-- `[x]` Create `ic_attendance.xml`
-- `[x]` Create `ic_leave.xml`
-- `[x]` Create `ic_salary.xml`
-- `[x]` Create `ic_payslip.xml`
-- `[x]` Create `ic_documents.xml`
-- `[x]` Create `ic_notice.xml`
-- `[x]` Create `ic_holiday.xml`
-- `[x]` Create `ic_project.xml`
-- `[x]` Create `ic_training.xml`
-- `[x]` Create `ic_logout.xml`
-- `[x]` Create `ic_menu.xml`
+- `[x]` Data Models & API Integration
+    - `[x]` Create `AdvanceRequest.java`
+    - `[x]` Create `AdvanceResponse.java`
+    - `[x]` Update `ApiService.java`
+- `[x]` Create Repository
+    - `[x]` Create `AdvanceRepository.java`
+- `[x]` Dashboard Integration
+    - `[x]` Update `activity_employee_dashboard.xml`
+    - `[x]` Update `EmployeeDashboard.java`
+- `[x]` Advance Salary UI & Logic
+    - `[x]` Update `activity_advance_salary.xml`
+    - `[x]` Update `AdvanceSalaryActivity.java`
+    - `[x]` Create `AdvanceAdapter.java` and `item_advance.xml`

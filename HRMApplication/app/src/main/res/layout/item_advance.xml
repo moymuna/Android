@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
+    android:layout_marginBottom="12dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="2dp"
-    app:strokeColor="#E4EAF3"
+    app:strokeColor="#E5EAF2"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -16,29 +15,51 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tvProjectName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Project Name"
-            android:textColor="#102A56"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="₹ 0.00"
+                android:textColor="#102A56"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp"
+                android:text="PENDING"
+                android:textColor="#F59E0B"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tvProjectDescription"
+            android:id="@+id/tvReason"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Project Description goes here..."
-            android:textColor="#51627D"
+            android:text="Reason for advance"
+            android:textColor="#52627B"
             android:textSize="14sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginVertical="12dp"
-            android:background="#E4EAF3" />
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="#E5EAF2" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,45 +75,45 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="START DATE"
+                    android:text="Required By"
                     android:textColor="#8793A7"
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvStartDate"
+                    android:id="@+id/tvRequiredDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="2023-01-01"
-                    android:textColor="#102A56"
-                    android:textSize="13sp" />
+                    android:text="2024-01-01"
+                    android:textColor="#52627B"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="end"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="END DATE"
+                    android:text="Installments"
                     android:textColor="#8793A7"
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvEndDate"
+                    android:id="@+id/tvInstallments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="2023-12-31"
-                    android:textColor="#102A56"
-                    android:textSize="13sp" />
+                    android:text="0"
+                    android:textColor="#52627B"
+                    android:textSize="12sp" />
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

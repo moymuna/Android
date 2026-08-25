@@ -1,550 +1,927 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.drawerlayout.widget.DrawerLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
-    android:id="@+id/drawerLayout"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="#F4F7FC"
     tools:context=".EmployeeDashboard">
 
 
-    <!-- ===================================================== -->
-    <!-- MAIN CONTENT                                          -->
-    <!-- ===================================================== -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/dashboardScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:paddingBottom="20dp"
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_gradient">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
 
-        <!-- ================================================= -->
-        <!-- TOP APP BAR                                       -->
-        <!-- ================================================= -->
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            android:background="@android:color/transparent"
 
-            app:navigationIcon="@drawable/ic_menu"
-            app:navigationIconTint="@android:color/white"
-
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
+            <!-- ================================================= -->
+            <!-- TOP HEADER                                       -->
+            <!-- ================================================= -->
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0B2454"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="18dp">
 
 
-                <!-- Notification -->
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_avatar"
+                    android:padding="10dp"
+                    android:src="@drawable/logo"
+                    android:scaleType="centerInside" />
 
-                <ImageButton
-                    android:id="@+id/btnNotification"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
 
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
 
-                    android:contentDescription="Notifications"
 
-                    android:padding="12dp"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MY HRM"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Employee Portal"
+                        android:textColor="#B8C7E6"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:padding="10dp"
                     android:src="@drawable/ic_notification"
-
-                    app:tint="@android:color/white" />
-
+                    android:background="@drawable/bg_header_icon"
+                    android:contentDescription="Notifications" />
 
             </LinearLayout>
 
-        </com.google.android.material.appbar.MaterialToolbar>
 
-
-        <!-- ================================================= -->
-        <!-- MAIN SCROLL VIEW                                  -->
-        <!-- ================================================= -->
-
-        <ScrollView
-            android:id="@+id/dashboardScrollView"
-
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-
-            android:fillViewport="true"
-
-            android:clipToPadding="false"
-
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
+            <!-- ================================================= -->
+            <!-- WELCOME SECTION                                  -->
+            <!-- ================================================= -->
 
             <LinearLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingTop="20dp"
+                android:paddingEnd="18dp">
 
-                android:padding="16dp">
 
-
-                <!-- ========================================= -->
-                <!-- EMPLOYEE PROFILE CARD                    -->
-                <!-- ========================================= -->
-
-                <LinearLayout
-
+                <TextView
+                    android:id="@+id/tvWelcome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Welcome back 👋"
+                    android:textColor="#102A56"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
 
-                    android:orientation="horizontal"
 
+                <TextView
+                    android:id="@+id/tvEmployeeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Employee Name"
+                    android:textColor="#193B70"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tvEmployeeCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Employee ID: N/A"
+                    android:textColor="#73829B"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+
+            <!-- ================================================= -->
+            <!-- EMPLOYEE PROFILE CARD                            -->
+            <!-- ================================================= -->
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="18dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#E4EAF3"
+                app:strokeWidth="1dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-
-                    android:padding="20dp"
-
-                    android:background="@drawable/bg_card">
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
 
                     <!-- Employee Photo -->
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/imgEmployee"
-
-                        android:layout_width="82dp"
-                        android:layout_height="82dp"
-
-                        android:src="@drawable/ic_person"
-
+                    <ImageView
+                        android:id="@+id/ivEmployeePhoto"
+                        android:layout_width="76dp"
+                        android:layout_height="76dp"
+                        android:background="@drawable/bg_employee_photo"
+                        android:clipToOutline="true"
+                        android:contentDescription="Employee Photo"
                         android:scaleType="centerCrop"
+                        android:src="@drawable/ic_profile_placeholder" />
 
-                        app:shapeAppearanceOverlay="@style/CircleImageView" />
-
-
-                    <!-- Employee Information -->
 
                     <LinearLayout
-
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-
                         android:layout_weight="1"
-
-                        android:layout_marginStart="16dp"
-
+                        android:layout_marginStart="15dp"
                         android:orientation="vertical">
 
 
                         <TextView
-                            android:id="@+id/tvWelcome"
-
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tvProfileName"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
-                            android:text="Welcome"
-
-                            android:textColor="#777777"
-                            android:textSize="14sp" />
-
-
-                        <TextView
-                            android:id="@+id/tvEmployeeName"
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:layout_marginTop="3dp"
-
                             android:text="Employee Name"
-
-                            android:textColor="#222222"
-                            android:textSize="21sp"
+                            android:textColor="#102A56"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
 
                         <TextView
-                            android:id="@+id/tvEmployeeCode"
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:layout_marginTop="5dp"
-
-                            android:text="Employee ID: N/A"
-
-                            android:textColor="#666666"
-                            android:textSize="13sp" />
-
-
-                        <TextView
                             android:id="@+id/tvDesignation"
-
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
-                            android:layout_marginTop="2dp"
-
-                            android:text="Designation: N/A"
-
-                            android:textColor="#666666"
+                            android:layout_marginTop="4dp"
+                            android:text="Designation"
+                            android:textColor="#51627D"
                             android:textSize="13sp" />
 
 
                         <TextView
                             android:id="@+id/tvDepartment"
-
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
-                            android:layout_marginTop="2dp"
-
-                            android:text="Department: N/A"
-
-                            android:textColor="#666666"
+                            android:layout_marginTop="3dp"
+                            android:text="Department"
+                            android:textColor="#51627D"
                             android:textSize="13sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvEmploymentType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="FULL TIME"
+                            android:textColor="#2563EB"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-
-                <!-- ========================================= -->
-                <!-- SECTION TITLE                             -->
-                <!-- ========================================= -->
-
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="22dp"
-                    android:layout_marginBottom="12dp"
-
-                    android:text="Employee Services"
-
-                    android:textColor="#FFFFFF"
-
-                    android:textSize="20sp"
-
-                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
 
 
-                <!-- ========================================= -->
-                <!-- ROW 1                                     -->
-                <!-- ========================================= -->
+            <!-- ================================================= -->
+            <!-- TODAY ATTENDANCE                                 -->
+            <!-- ================================================= -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="18dp"
+                android:text="Today's Attendance"
+                android:textColor="#102A56"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="1dp"
+                app:strokeColor="#E5EAF2"
+                app:strokeWidth="1dp">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/tvAttendanceStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Not Marked"
+                                android:textColor="#F59E0B"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/tvAttendanceTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="Attendance for today"
+                                android:textColor="#7A879D"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="●"
+                            android:textColor="#F59E0B"
+                            android:textSize="24sp" />
+
+                    </LinearLayout>
 
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnAttendance"
-
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-
-                        android:layout_weight="1"
-
-                        android:layout_marginEnd="6dp"
-
-                        android:text="Attendance"
-
-                        android:textSize="13sp"
-                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="14dp"
+                        android:text="Clock In"
                         android:textAllCaps="false"
-
-                        app:cornerRadius="15dp" />
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnApplyLeave"
-
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-
-                        android:layout_weight="1"
-
-                        android:layout_marginStart="6dp"
-
-                        android:text="Apply Leave"
-
-                        android:textSize="13sp"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
                         android:textStyle="bold"
-                        android:textAllCaps="false"
-
-                        app:cornerRadius="15dp" />
+                        android:backgroundTint="#16A34A"
+                        app:cornerRadius="14dp" />
 
                 </LinearLayout>
 
-
-                <!-- ROW 2 -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="12dp"
-
-                    android:orientation="horizontal">
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnLeaveBalance"
-
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-
-                        android:layout_weight="1"
-
-                        android:layout_marginEnd="6dp"
-
-                        android:text="Leave Balance"
-
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-
-                        app:cornerRadius="15dp" />
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnSalary"
-
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-
-                        android:layout_weight="1"
-
-                        android:layout_marginStart="6dp"
-
-                        android:text="My Salary"
-
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-
-                        app:cornerRadius="15dp" />
-
-                </LinearLayout>
-
-
-                <!-- ROW 3 -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="12dp"
-
-                    android:orientation="horizontal">
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnPayslip"
-
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-
-                        android:layout_weight="1"
-
-                        android:layout_marginEnd="6dp"
-
-                        android:text="Payslip"
-
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-
-                        app:cornerRadius="15dp" />
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnDocuments"
-
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-
-                        android:layout_weight="1"
-
-                        android:layout_marginStart="6dp"
-
-                        android:text="Documents"
-
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-
-                        app:cornerRadius="15dp" />
-
-                </LinearLayout>
-
-
-                <!-- ROW 4 -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="12dp"
-
-                    android:orientation="horizontal">
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnNotice"
-
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-
-                        android:layout_weight="1"
-
-                        android:layout_marginEnd="6dp"
-
-                        android:text="Notice Board"
-
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-
-                        app:cornerRadius="15dp" />
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnHoliday"
-
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-
-                        android:layout_weight="1"
-
-                        android:layout_marginStart="6dp"
-
-                        android:text="Holiday"
-
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-
-                        app:cornerRadius="15dp" />
-
-                </LinearLayout>
-
-
-                <!-- ROW 5 -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="12dp"
-
-                    android:orientation="horizontal">
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnProject"
-
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-
-                        android:layout_weight="1"
-
-                        android:layout_marginEnd="6dp"
-
-                        android:text="Project"
-
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-
-                        app:cornerRadius="15dp" />
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnTraining"
-
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-
-                        android:layout_weight="1"
-
-                        android:layout_marginStart="6dp"
-
-                        android:text="Training"
-
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-
-                        app:cornerRadius="15dp" />
-
-                </LinearLayout>
-
-
-                <!-- LOGOUT -->
-
-                <com.google.android.material.button.MaterialButton
-
-                    android:id="@+id/btnLogout"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-
-                    android:layout_marginTop="25dp"
-                    android:layout_marginBottom="20dp"
-
-                    android:text="Logout"
-
-                    android:textStyle="bold"
-                    android:textAllCaps="false"
-
-                    android:textColor="#FFFFFF"
-
-                    android:backgroundTint="#D32F2F"
-
-                    app:cornerRadius="20dp" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <!-- ================================================= -->
+            <!-- SUMMARY CARDS                                    -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="18dp"
+                android:orientation="horizontal">
+
+
+                <!-- Leave -->
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="17dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#E5EAF2"
+                    app:strokeWidth="1dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="LEAVE"
+                            android:textColor="#74819A"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/tvLeaveBalance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="--"
+                            android:textColor="#2563EB"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Available"
+                            android:textColor="#8793A7"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <!-- Pending -->
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="17dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#E5EAF2"
+                    app:strokeWidth="1dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PENDING REQUESTS"
+                            android:textColor="#74819A"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/tvPendingRequests"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="--"
+                            android:textColor="#F59E0B"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Leave requests"
+                            android:textColor="#8793A7"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
 
-        </ScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- ================================================= -->
+            <!-- QUICK ACTIONS                                    -->
+            <!-- ================================================= -->
 
-
-    <!-- ===================================================== -->
-    <!-- NAVIGATION DRAWER                                    -->
-    <!-- ===================================================== -->
-
-    <com.google.android.material.navigation.NavigationView
-
-        android:id="@+id/navigationView"
-
-        android:layout_width="300dp"
-        android:layout_height="match_parent"
-
-        android:layout_gravity="start"
-
-        android:background="#FFFFFF"
-
-        app:headerLayout="@layout/nav_header_employee"
-
-        app:menu="@menu/employee_drawer_menu" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="18dp"
+                android:text="Quick Actions"
+                android:textColor="#102A56"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
 
-</androidx.drawerlayout.widget.DrawerLayout>
+            <!-- Row 1 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnApplyLeave"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:text="Apply Leave"
+                    android:textAllCaps="false"
+                    android:textColor="#1D4ED8"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#EAF2FF"
+                    app:cornerRadius="15dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLeaveBalance"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Leave Balance"
+                    android:textAllCaps="false"
+                    android:textColor="#15803D"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#EAF9EF"
+                    app:cornerRadius="15dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSalary"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:text="My Salary"
+                    android:textAllCaps="false"
+                    android:textColor="#7C3AED"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#F3EEFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+
+            <!-- Row 2 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPayslip"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:text="Payslip"
+                    android:textAllCaps="false"
+                    android:textColor="#C2410C"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFF2E9"
+                    app:cornerRadius="15dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDocuments"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Documents"
+                    android:textAllCaps="false"
+                    android:textColor="#0369A1"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#EAF7FF"
+                    app:cornerRadius="15dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNotice"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:text="Notice"
+                    android:textAllCaps="false"
+                    android:textColor="#BE123C"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFF0F3"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+
+            <!-- Row 3 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnHoliday"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:text="Holidays"
+                    android:textAllCaps="false"
+                    android:textColor="#047857"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#EAFFB5"
+                    app:cornerRadius="15dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnProject"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Projects"
+                    android:textAllCaps="false"
+                    android:textColor="#4338CA"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#EEF0FF"
+                    app:cornerRadius="15dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTraining"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:text="Training"
+                    android:textAllCaps="false"
+                    android:textColor="#92400E"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFF7E8"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+
+            <!-- Row 4 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAdvanceSalary"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:text="Advance Salary"
+                    android:textAllCaps="false"
+                    android:textColor="#B91C1C"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#FEF2F2"
+                    app:cornerRadius="15dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp" />
+
+            </LinearLayout>
+
+
+            <!-- ================================================= -->
+            <!-- UPCOMING HOLIDAYS                                -->
+            <!-- ================================================= -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="18dp"
+                android:text="Upcoming Holidays"
+                android:textColor="#102A56"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="1dp"
+                app:strokeColor="#E5EAF2"
+                app:strokeWidth="1dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+
+                    <TextView
+                        android:id="@+id/tvHolidayOne"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="No upcoming holiday information"
+                        android:textColor="#52627B"
+                        android:textSize="13sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvHolidayTwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text=""
+                        android:textColor="#52627B"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <!-- ================================================= -->
+            <!-- RECENT ANNOUNCEMENT                              -->
+            <!-- ================================================= -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="18dp"
+                android:text="Recent Announcement"
+                android:textColor="#102A56"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="1dp"
+                app:strokeColor="#E5EAF2"
+                app:strokeWidth="1dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+
+                    <TextView
+                        android:id="@+id/tvAnnouncementTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="No recent announcement"
+                        android:textColor="#102A56"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tvAnnouncementDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text=""
+                        android:textColor="#75839A"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <!-- ================================================= -->
+            <!-- THIS MONTH                                       -->
+            <!-- ================================================= -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="18dp"
+                android:text="This Month"
+                android:textColor="#102A56"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="1dp"
+                app:strokeColor="#E5EAF2"
+                app:strokeWidth="1dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+
+                    <TextView
+                        android:id="@+id/tvPresentCount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Present\n--"
+                        android:textColor="#16A34A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tvAbsentCount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Absent\n--"
+                        android:textColor="#DC2626"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tvLeaveCount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="On Leave\n--"
+                        android:textColor="#7C3AED"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tvWorkedHours"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Hours\n--"
+                        android:textColor="#2563EB"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <!-- ================================================= -->
+            <!-- LOGOUT                                            -->
+            <!-- ================================================= -->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#DC2626"
+                android:text="Logout"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="15dp" />
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

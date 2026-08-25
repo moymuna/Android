@@ -2,38 +2,116 @@ package com.example.myaplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.imageview.ShapeableImageView;
-import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.button.MaterialButton;
 
 import com.example.myaplication.model.response.EmployeeResponse;
 import com.example.myaplication.session.SesssoinManager;
 
 public class EmployeeDashboard extends AppCompatActivity {
 
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
-    private MaterialToolbar toolbar;
-
-    private ShapeableImageView imgEmployee;
-
-    private TextView tvWelcome;
-    private TextView tvEmployeeName;
-    private TextView tvEmployeeCode;
-    private TextView tvDesignation;
-    private TextView tvDepartment;
+    // =====================================================
+    // SESSION
+    // =====================================================
 
     private SesssoinManager sessionManager;
     private EmployeeResponse employee;
 
+
+    // =====================================================
+    // EMPLOYEE PROFILE
+    // =====================================================
+
+    private ImageView ivEmployeePhoto;
+
+    private TextView tvWelcome;
+    private TextView tvEmployeeName;
+    private TextView tvEmployeeCode;
+
+    private TextView tvProfileName;
+    private TextView tvDesignation;
+    private TextView tvDepartment;
+    private TextView tvEmploymentType;
+
+
+    // =====================================================
+    // TODAY ATTENDANCE
+    // =====================================================
+
+    private TextView tvAttendanceStatus;
+    private TextView tvAttendanceTime;
+
+    private MaterialButton btnAttendance;
+
+
+    // =====================================================
+    // SUMMARY
+    // =====================================================
+
+    private TextView tvLeaveBalance;
+    private TextView tvPendingRequests;
+
+
+    // =====================================================
+    // QUICK ACTIONS
+    // =====================================================
+
+    private MaterialButton btnApplyLeave;
+    private MaterialButton btnLeaveBalance;
+    private MaterialButton btnSalary;
+
+    private MaterialButton btnPayslip;
+    private MaterialButton btnDocuments;
+    private MaterialButton btnNotice;
+
+    private MaterialButton btnHoliday;
+    private MaterialButton btnProject;
+    private MaterialButton btnTraining;
+    private MaterialButton btnAdvanceSalary;
+
+
+    // =====================================================
+    // UPCOMING HOLIDAYS
+    // =====================================================
+
+    private TextView tvHolidayOne;
+    private TextView tvHolidayTwo;
+
+
+    // =====================================================
+    // ANNOUNCEMENT
+    // =====================================================
+
+    private TextView tvAnnouncementTitle;
+    private TextView tvAnnouncementDescription;
+
+
+    // =====================================================
+    // THIS MONTH
+    // =====================================================
+
+    private TextView tvPresentCount;
+    private TextView tvAbsentCount;
+    private TextView tvLeaveCount;
+    private TextView tvWorkedHours;
+
+
+    // =====================================================
+    // LOGOUT
+    // =====================================================
+
+    private MaterialButton btnLogout;
+
+
+    // =====================================================
+    // ON CREATE
+    // =====================================================
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,25 +123,25 @@ public class EmployeeDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_employee_dashboard);
 
 
-        // =========================================
-        // INITIALIZE
-        // =========================================
+        // =================================================
+        // INITIALIZE VIEWS
+        // =================================================
 
         initViews();
 
 
-        // =========================================
+        // =================================================
         // SESSION
-        // =========================================
+        // =================================================
 
         sessionManager = new SesssoinManager(this);
 
         employee = sessionManager.getEmployee();
 
 
-        // =========================================
-        // CHECK LOGIN
-        // =========================================
+        // =================================================
+        // CHECK EMPLOYEE SESSION
+        // =================================================
 
         if (employee == null) {
 
@@ -73,217 +151,224 @@ public class EmployeeDashboard extends AppCompatActivity {
         }
 
 
-        // =========================================
-        // LOAD EMPLOYEE DATA
-        // =========================================
+        // =================================================
+        // LOAD EMPLOYEE INFORMATION
+        // =================================================
 
         loadEmployeeData();
 
 
-        // =========================================
-        // HAMBURGER MENU
-        // =========================================
+        // =================================================
+        // SET DEFAULT DASHBOARD DATA
+        // =================================================
 
-        toolbar.setNavigationOnClickListener(v -> {
+        setDefaultDashboardData();
 
-            drawerLayout.openDrawer(navigationView);
 
-        });
+        // =================================================
+        // BUTTON LISTENERS
+        // =================================================
 
-
-        // =========================================
-        // NOTIFICATION
-        // =========================================
-
-        findViewById(R.id.btnNotification)
-                .setOnClickListener(v -> {
-
-                    Toast.makeText(
-                            EmployeeDashboard.this,
-                            "Notifications",
-                            Toast.LENGTH_SHORT
-                    ).show();
-
-                });
-
-
-        // =========================================
-        // NAVIGATION MENU
-        // =========================================
-
-        navigationView.setNavigationItemSelectedListener(item -> {
-
-            int id = item.getItemId();
-
-
-            if (id == R.id.nav_dashboard) {
-
-                drawerLayout.closeDrawer(navigationView);
-
-            }
-
-
-            else if (id == R.id.nav_attendance) {
-
-                Toast.makeText(
-                        this,
-                        "Attendance",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                drawerLayout.closeDrawer(navigationView);
-
-            }
-
-
-            else if (id == R.id.nav_leave) {
-
-                Toast.makeText(
-                        this,
-                        "Leave",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                drawerLayout.closeDrawer(navigationView);
-
-            }
-
-
-            else if (id == R.id.nav_salary) {
-
-                Toast.makeText(
-                        this,
-                        "My Salary",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                drawerLayout.closeDrawer(navigationView);
-
-            }
-
-
-            else if (id == R.id.nav_payslip) {
-
-                Toast.makeText(
-                        this,
-                        "Payslip",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                drawerLayout.closeDrawer(navigationView);
-
-            }
-
-
-            else if (id == R.id.nav_documents) {
-
-                Toast.makeText(
-                        this,
-                        "Documents",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                drawerLayout.closeDrawer(navigationView);
-
-            }
-
-
-            else if (id == R.id.nav_notice) {
-
-                Toast.makeText(
-                        this,
-                        "Notice Board",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                drawerLayout.closeDrawer(navigationView);
-
-            }
-
-
-            else if (id == R.id.nav_holiday) {
-
-                Toast.makeText(
-                        this,
-                        "Holiday",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                drawerLayout.closeDrawer(navigationView);
-
-            }
-
-
-            else if (id == R.id.nav_project) {
-
-                Toast.makeText(
-                        this,
-                        "Project",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                drawerLayout.closeDrawer(navigationView);
-
-            }
-
-
-            else if (id == R.id.nav_training) {
-
-                Toast.makeText(
-                        this,
-                        "Training",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                drawerLayout.closeDrawer(navigationView);
-
-            }
-
-
-            else if (id == R.id.nav_logout) {
-
-                logout();
-
-            }
-
-            return true;
-        });
-
-
-        // =========================================
-        // DASHBOARD LOGOUT
-        // =========================================
-
-        findViewById(R.id.btnLogout)
-                .setOnClickListener(v -> logout());
+        setupButtonListeners();
     }
 
 
     // =====================================================
-    // INITIALIZE VIEWS
+    // INITIALIZE ALL VIEWS
     // =====================================================
 
     private void initViews() {
 
-        drawerLayout = findViewById(R.id.drawerLayout);
 
-        navigationView = findViewById(R.id.navigationView);
+        // =================================================
+        // EMPLOYEE PROFILE
+        // =================================================
 
-        toolbar = findViewById(R.id.toolbar);
+        ivEmployeePhoto = findViewById(
+                R.id.ivEmployeePhoto
+        );
 
 
-        imgEmployee = findViewById(R.id.imgEmployee);
+        tvWelcome = findViewById(
+                R.id.tvWelcome
+        );
 
-        tvWelcome = findViewById(R.id.tvWelcome);
 
-        tvEmployeeName = findViewById(R.id.tvEmployeeName);
+        tvEmployeeName = findViewById(
+                R.id.tvEmployeeName
+        );
 
-        tvEmployeeCode = findViewById(R.id.tvEmployeeCode);
 
-        tvDesignation = findViewById(R.id.tvDesignation);
+        tvEmployeeCode = findViewById(
+                R.id.tvEmployeeCode
+        );
 
-        tvDepartment = findViewById(R.id.tvDepartment);
 
+        tvProfileName = findViewById(
+                R.id.tvProfileName
+        );
+
+
+        tvDesignation = findViewById(
+                R.id.tvDesignation
+        );
+
+
+        tvDepartment = findViewById(
+                R.id.tvDepartment
+        );
+
+
+        tvEmploymentType = findViewById(
+                R.id.tvEmploymentType
+        );
+
+
+        // =================================================
+        // ATTENDANCE
+        // =================================================
+
+        tvAttendanceStatus = findViewById(
+                R.id.tvAttendanceStatus
+        );
+
+
+        tvAttendanceTime = findViewById(
+                R.id.tvAttendanceTime
+        );
+
+
+        btnAttendance = findViewById(
+                R.id.btnAttendance
+        );
+
+
+        // =================================================
+        // SUMMARY
+        // =================================================
+
+        tvLeaveBalance = findViewById(
+                R.id.tvLeaveBalance
+        );
+
+
+        tvPendingRequests = findViewById(
+                R.id.tvPendingRequests
+        );
+
+
+        // =================================================
+        // QUICK ACTIONS
+        // =================================================
+
+        btnApplyLeave = findViewById(
+                R.id.btnApplyLeave
+        );
+
+
+        btnLeaveBalance = findViewById(
+                R.id.btnLeaveBalance
+        );
+
+
+        btnSalary = findViewById(
+                R.id.btnSalary
+        );
+
+
+        btnPayslip = findViewById(
+                R.id.btnPayslip
+        );
+
+
+        btnDocuments = findViewById(
+                R.id.btnDocuments
+        );
+
+
+        btnNotice = findViewById(
+                R.id.btnNotice
+        );
+
+
+        btnHoliday = findViewById(
+                R.id.btnHoliday
+        );
+
+
+        btnProject = findViewById(
+                R.id.btnProject
+        );
+
+
+        btnTraining = findViewById(
+                R.id.btnTraining
+        );
+
+        btnAdvanceSalary = findViewById(
+                R.id.btnAdvanceSalary
+        );
+
+
+        // =================================================
+        // UPCOMING HOLIDAYS
+        // =================================================
+
+        tvHolidayOne = findViewById(
+                R.id.tvHolidayOne
+        );
+
+
+        tvHolidayTwo = findViewById(
+                R.id.tvHolidayTwo
+        );
+
+
+        // =================================================
+        // ANNOUNCEMENT
+        // =================================================
+
+        tvAnnouncementTitle = findViewById(
+                R.id.tvAnnouncementTitle
+        );
+
+
+        tvAnnouncementDescription = findViewById(
+                R.id.tvAnnouncementDescription
+        );
+
+
+        // =================================================
+        // THIS MONTH
+        // =================================================
+
+        tvPresentCount = findViewById(
+                R.id.tvPresentCount
+        );
+
+
+        tvAbsentCount = findViewById(
+                R.id.tvAbsentCount
+        );
+
+
+        tvLeaveCount = findViewById(
+                R.id.tvLeaveCount
+        );
+
+
+        tvWorkedHours = findViewById(
+                R.id.tvWorkedHours
+        );
+
+
+        // =================================================
+        // LOGOUT
+        // =================================================
+
+        btnLogout = findViewById(
+                R.id.btnLogout
+        );
     }
 
 
@@ -293,115 +378,355 @@ public class EmployeeDashboard extends AppCompatActivity {
 
     private void loadEmployeeData() {
 
-        tvWelcome.setText("Welcome");
+
+        // =================================================
+        // EMPLOYEE NAME
+        // =================================================
+
+        String employeeName = "Employee";
+
+
+        if (employee.getFullName() != null &&
+                !employee.getFullName().trim().isEmpty()) {
+
+            employeeName = employee.getFullName();
+        }
+
+
+        // =================================================
+        // WELCOME
+        // =================================================
+
+        tvWelcome.setText(
+                "Welcome back 👋"
+        );
+
+
+        // =================================================
+        // WELCOME EMPLOYEE NAME
+        // =================================================
 
         tvEmployeeName.setText(
-                employee.getFullName() != null
-                        ? employee.getFullName()
-                        : "Employee"
+                employeeName
         );
+
+
+        // =================================================
+        // PROFILE NAME
+        // =================================================
+
+        tvProfileName.setText(
+                employeeName
+        );
+
+
+        // =================================================
+        // EMPLOYEE CODE
+        // =================================================
+
+        String employeeCode = "N/A";
+
+
+        if (employee.getEmployeeCode() != null &&
+                !employee.getEmployeeCode().trim().isEmpty()) {
+
+            employeeCode = employee.getEmployeeCode();
+        }
 
 
         tvEmployeeCode.setText(
-                "Employee ID: " +
-                        (employee.getEmployeeCode() != null
-                                ? employee.getEmployeeCode()
-                                : "N/A")
+                "Employee ID: " + employeeCode
         );
 
 
-        tvDesignation.setText(
-                "Designation: " +
-                        (employee.getDesignationTitle() != null
-                                ? employee.getDesignationTitle()
-                                : "N/A")
-        );
+        // =================================================
+        // DESIGNATION
+        // =================================================
+
+        if (employee.getDesignationTitle() != null &&
+                !employee.getDesignationTitle().trim().isEmpty()) {
+
+            tvDesignation.setText(
+                    employee.getDesignationTitle()
+            );
+
+        } else {
+
+            tvDesignation.setText(
+                    "Designation"
+            );
+        }
 
 
-        tvDepartment.setText(
-                "Department: " +
-                        (employee.getDepartmentName() != null
-                                ? employee.getDepartmentName()
-                                : "N/A")
-        );
+        // =================================================
+        // DEPARTMENT
+        // =================================================
+
+        if (employee.getDepartmentName() != null &&
+                !employee.getDepartmentName().trim().isEmpty()) {
+
+            tvDepartment.setText(
+                    employee.getDepartmentName()
+            );
+
+        } else {
+
+            tvDepartment.setText(
+                    "Department"
+            );
+        }
 
 
-        // =========================================
-        // LOAD EMPLOYEE PHOTO
-        // =========================================
+        // =================================================
+        // EMPLOYMENT TYPE
+        // =================================================
+
+        if (employee.getEmploymentType() != null) {
+
+            tvEmploymentType.setText(
+                    employee.getEmploymentType().toString()
+            );
+
+        } else {
+
+            tvEmploymentType.setText(
+                    "FULL TIME"
+            );
+        }
+
+
+        // =================================================
+        // EMPLOYEE PHOTO
+        // =================================================
 
         if (employee.getImage() != null &&
                 !employee.getImage().trim().isEmpty()) {
 
             Glide.with(this)
                     .load(employee.getImage())
-                    .placeholder(R.drawable.ic_person)
-                    .error(R.drawable.ic_person)
-                    .into(imgEmployee);
+                    .placeholder(
+                            R.drawable.ic_profile_placeholder
+                    )
+                    .error(
+                            R.drawable.ic_profile_placeholder
+                    )
+                    .into(ivEmployeePhoto);
 
         } else {
 
-            imgEmployee.setImageResource(
-                    R.drawable.ic_person
+            ivEmployeePhoto.setImageResource(
+                    R.drawable.ic_profile_placeholder
             );
         }
+    }
 
 
-        // =========================================
-        // LOAD DRAWER HEADER
-        // =========================================
+    // =====================================================
+    // DEFAULT DASHBOARD DATA
+    // =====================================================
 
-        android.view.View headerView =
-                navigationView.getHeaderView(0);
-
-
-        ShapeableImageView navEmployeeImage =
-                headerView.findViewById(
-                        R.id.navEmployeeImage
-                );
+    private void setDefaultDashboardData() {
 
 
-        TextView navEmployeeName =
-                headerView.findViewById(
-                        R.id.navEmployeeName
-                );
+        // =================================================
+        // ATTENDANCE
+        // =================================================
 
-
-        TextView navEmployeeCode =
-                headerView.findViewById(
-                        R.id.navEmployeeCode
-                );
-
-
-        navEmployeeName.setText(
-                employee.getFullName() != null
-                        ? employee.getFullName()
-                        : "Employee"
+        tvAttendanceStatus.setText(
+                "Not Marked"
         );
 
 
-        navEmployeeCode.setText(
-                employee.getEmployeeCode() != null
-                        ? employee.getEmployeeCode()
-                        : "Employee ID"
+        tvAttendanceTime.setText(
+                "Attendance for today"
         );
 
 
-        if (employee.getImage() != null &&
-                !employee.getImage().trim().isEmpty()) {
+        btnAttendance.setText(
+                "Clock In"
+        );
 
-            Glide.with(this)
-                    .load(employee.getImage())
-                    .placeholder(R.drawable.ic_person)
-                    .error(R.drawable.ic_person)
-                    .into(navEmployeeImage);
 
-        } else {
+        // =================================================
+        // LEAVE
+        // =================================================
 
-            navEmployeeImage.setImageResource(
-                    R.drawable.ic_person
-            );
-        }
+        tvLeaveBalance.setText(
+                "--"
+        );
+
+
+        // =================================================
+        // PENDING REQUESTS
+        // =================================================
+
+        tvPendingRequests.setText(
+                "--"
+        );
+
+
+        // =================================================
+        // HOLIDAYS
+        // =================================================
+
+        tvHolidayOne.setText(
+                "No upcoming holiday information"
+        );
+
+
+        tvHolidayTwo.setText(
+                ""
+        );
+
+
+        // =================================================
+        // ANNOUNCEMENT
+        // =================================================
+
+        tvAnnouncementTitle.setText(
+                "No recent announcement"
+        );
+
+
+        tvAnnouncementDescription.setText(
+                ""
+        );
+
+
+        // =================================================
+        // THIS MONTH
+        // =================================================
+
+        tvPresentCount.setText(
+                "Present\n--"
+        );
+
+
+        tvAbsentCount.setText(
+                "Absent\n--"
+        );
+
+
+        tvLeaveCount.setText(
+                "On Leave\n--"
+        );
+
+
+        tvWorkedHours.setText(
+                "Hours\n--"
+        );
+    }
+
+
+    // =====================================================
+    // BUTTON LISTENERS
+    // =====================================================
+
+    private void setupButtonListeners() {
+
+
+        // =================================================
+        // ATTENDANCE
+        // =================================================
+
+        btnAttendance.setOnClickListener(v -> {
+            startActivity(new Intent(EmployeeDashboard.this, AttendanceActivity.class));
+        });
+
+
+        // =================================================
+        // APPLY LEAVE
+        // =================================================
+
+        btnApplyLeave.setOnClickListener(v -> {
+            startActivity(new Intent(EmployeeDashboard.this, ApplyLeaveActivity.class));
+        });
+
+
+        // =================================================
+        // LEAVE BALANCE
+        // =================================================
+
+        btnLeaveBalance.setOnClickListener(v -> {
+            startActivity(new Intent(EmployeeDashboard.this, LeaveBalanceActivity.class));
+        });
+
+
+        // =================================================
+        // SALARY
+        // =================================================
+
+        btnSalary.setOnClickListener(v -> {
+            startActivity(new Intent(EmployeeDashboard.this, MySalaryActivity.class));
+        });
+
+
+        // =================================================
+        // PAYSLIP
+        // =================================================
+
+        btnPayslip.setOnClickListener(v -> {
+            startActivity(new Intent(EmployeeDashboard.this, PayslipActivity.class));
+        });
+
+
+        // =================================================
+        // DOCUMENTS
+        // =================================================
+
+        btnDocuments.setOnClickListener(v -> {
+            startActivity(new Intent(EmployeeDashboard.this, DocumentActivity.class));
+        });
+
+
+        // =================================================
+        // NOTICE
+        // =================================================
+
+        btnNotice.setOnClickListener(v -> {
+            startActivity(new Intent(EmployeeDashboard.this, NoticeBoardActivity.class));
+        });
+
+
+        // =================================================
+        // HOLIDAYS
+        // =================================================
+
+        btnHoliday.setOnClickListener(v -> {
+            startActivity(new Intent(EmployeeDashboard.this, HolidayListActivity.class));
+        });
+
+
+        // =================================================
+        // PROJECTS
+        // =================================================
+
+        btnProject.setOnClickListener(v -> {
+            startActivity(new Intent(EmployeeDashboard.this, ProjectActivity.class));
+        });
+
+
+        // =================================================
+        // TRAINING
+        // =================================================
+
+        btnTraining.setOnClickListener(v -> {
+            startActivity(new Intent(EmployeeDashboard.this, TrainingActivity.class));
+        });
+
+        btnAdvanceSalary.setOnClickListener(v -> {
+            startActivity(new Intent(EmployeeDashboard.this, AdvanceSalaryActivity.class));
+        });
+
+
+        // =================================================
+        // LOGOUT
+        // =================================================
+
+        btnLogout.setOnClickListener(v -> {
+
+            logout();
+        });
     }
 
 
@@ -411,7 +736,10 @@ public class EmployeeDashboard extends AppCompatActivity {
 
     private void logout() {
 
-        sessionManager.logout();
+        if (sessionManager != null) {
+
+            sessionManager.logout();
+        }
 
 
         Intent intent = new Intent(
@@ -433,7 +761,7 @@ public class EmployeeDashboard extends AppCompatActivity {
 
 
     // =====================================================
-    // GO LOGIN
+    // GO TO LOGIN
     // =====================================================
 
     private void goToLogin() {
